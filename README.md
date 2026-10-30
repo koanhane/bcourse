@@ -1,36 +1,33 @@
-# bCourse Remind Me case study
+# bCourse Remind Me — revised case study
 
-Open index.html in a current browser. Keep assets/ beside it. No installation, build step, or online font service is required. Upload this folder's contents to static hosting to publish it; index.html must be at the site's root.
+Open index.html in a browser. Keep editorial.css, site.js, and assets beside it. No installation or external fonts required. Publish this folder’s contents to static hosting to obtain a course-submission URL. The local preview is not a public URL.
+
+## Current structure
+
+Nine sections retained. Part 3 contains the final five mobile screens; Part 5 contains the key-screen alternatives sketch and the team’s hand-drawn flow. Part 6 explains V1→V2→V3 together, organized around reminder setup and the to-do list, with surrounding flow changes summarized afterward.
+
+Research now focuses on forgetting to act and underestimating work. The unrelated lecture-slide and course-announcement discussion has been removed. Source: bCourses_Canvas Student Survey (Responses).xlsx, Form Responses 1, 49 consented rows (2–50); 38 report at least one missed/nearly missed deadline (M2:M50). Exact quotes: P45 and P12. Emails are not included.
+
+## Prototype
+
+One muted, autoplaying, looping video inside a phone frame, default 2× playback. Pause and 1× controls remain available. If browser settings block autoplay, the page provides a Play button and an explanatory message.
+
+The original source was copy_7025F135-AB1C-4468-AFCB-7F6E8262567A.MOV. The focused clip uses 27.5–44.7 seconds of the original recording. It shows opening Lab 6, opening the reminder sheet, the phone notification, and then the email reminder, in that order. It is repackaged without re-encoding to preserve the original 1764×3840 video quality. The 17.2-second clip takes about 8.6 seconds at 2×. Playback speed is set by site.js; the underlying file retains its original speed.
+
+## Evidence boundaries
+
+V2 filenames identify the screens as after feedback. The page describes visible revisions without inventing participant quotes, counts, rejection reasons, or retest outcomes. Individual roles, tools, total project duration, still need confirmation by the team. The team confirmed using Claude to assist with the prototype. The AI estimates and notification screens are prototype content, not verified production integrations.
 
 ## Editing
 
-- Content and all nine sections: index.html.
-- Typography, colors, spacing, and responsive layouts: styles.css.
-- Explorations: both complete original V0 sketches are displayed. Add the team's actual selection and rejection reasons beside the documented alternatives.
-- Add actual testing observations, individual responsibilities, and original-design AI use when the team confirms them.
+Page content: index.html. Layout and type: editorial.css. Video controls: site.js. All original process and final-screen PNGs remain under assets. This revision uses plain text rather than separate V2→V3 fragments.
 
-## Evidence
+## Sidebar and confirmed AI use
 
-Survey: bCourses_Canvas Student Survey (Responses).xlsx, worksheet Form Responses 1, 49 consented rows (2–50), collected October 18–22, 2026. The page includes exact column ranges and verbatim anonymous quotes. Respondent emails and the raw workbook are not distributed with this website.
+Desktop and tablet windows use a fixed left contents column and right content. Current section is highlighted during scrolling. Phone widths show a compact contents block at the top. Reflections records that Claude helped build the prototype, separately from AI assistance with the case-study website.
 
-38/49 missed or nearly missed at least one assignment deadline in six months (M2:M50). 37/49 saw an announcement late at least once in one month (N2:N50; 1 unsure). 24/49 selected Google or Apple Calendar and 25/49 selected bCourses To Do list (F2:F50; multi-select, overlapping groups).
+## Upload to GitHub Pages
 
-Mobile images: original high-resolution PNG exports supplied by the team, copied without modification. Select images on the page to view the full-size originals. Team screen is included as assets/team.png. Video: replacement copy_7025F135-AB1C-4468-AFCB-7F6E8262567A.MOV, repackaged as MP4 without re-encoding (51.787 seconds). Original image quality is preserved. One embedded walkthrough only; Core Flows uses one five-screen sequence from the original PNG exports. The case study presents only the mobile product. Notification and email screens are design mockups, not proof of live delivery. The AI effort estimates, sample data, email and push controls belong to the prototype, not a verified production integration.
+Upload the **contents of this website folder** together to the repository folder selected in GitHub Pages. Keep index.html at that published folder’s root, with editorial.css, site.js, .nojekyll, and assets/ beside it. Do not upload only the HTML. Do not rename the assets independently of their HTML references.
 
-Editorial reference: https://www.meganarcherux.com/ux-work/duolingo-feature. No copy, assets, survey findings, or testing results from that unrelated case study were reused.
-
-This package contains website files, not a public hosted URL.
-
-## Process evidence added
-
-Original V0, V1 and V2 files are copied unchanged into assets/process/. Explorations displays both complete original sketches, uncropped, with links to their full-resolution originals. Testing shows two V1/V2 comparisons with explicit visible changes. V2 is identified as after feedback by its supplied filenames; no participant count, feedback quote, causal explanation or retest success is invented. A visible overlap between the V2 weekly summary and first date heading is identified as an artifact issue, not a participant finding.
-
-The walkthrough is under one minute, muted by default, with controls, inline playback and a poster image. Original quality takes priority over the teacher’s approximate 10 MB size guideline; the file is about 21 MB. There is one video and one five-screen prototype sequence. Nine sections retained. Remaining missing evidence: team rejection reasons, feedback record and retest results, individual roles, tools, total project duration, and the team’s account of its hardest decision and unexpected findings.
-
-## V3 final iteration
-
-Final mobile PNGs and the current recording are labeled V3. Iteration sequence: V0 sketches → V1 initial screens → V2 after-feedback screens → V3 final mobile design. Sketch-internal V1/V2/V3 labels refer to alternative layouts, not these project iterations.
-
-The V2→V3 explanation documents custom duration, dates and daily totals moving into the left column, and the final Canvas mobile visual treatment. It links to the existing five-screen sequence rather than repeating final images. Visible changes are separated from inferred design implications and unprovided team feedback.
-
-Core Flows retains the five final V3 screens. Explorations (Part 5) uses the team’s hand-drawn user-flow image in place of the previous user-flow sketch; the key-screen alternatives sketch remains.
+All website references use relative paths (assets/..., editorial.css, site.js), so a project URL such as username.github.io/repository-name/ works. Names and capitalization have been checked against the exact packaged files. The page contains no /Users/... paths or localhost links. Some supplied source images have shorter names in assets/; the HTML points to those packaged names.
