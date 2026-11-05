@@ -1,55 +1,13 @@
 (() => {
-  const video = document.querySelector('#prototype-video');
-  const play = document.querySelector('#play-toggle');
-  const speed = document.querySelector('#speed-toggle');
-  const status = document.querySelector('#playback-status');
-  video.muted = true;
-  video.defaultPlaybackRate = 2;
-  video.playbackRate = 2;
-  const sync = () => {
-    play.textContent = video.paused ? 'Play' : 'Pause';
-    play.setAttribute('aria-label', video.paused ? 'Play prototype' : 'Pause prototype');
-  };
-  const start = () => {
-    video.play().then(() => { status.textContent = ''; }).catch(() => {
-      status.textContent = 'Your browser paused autoplay. Press Play to start.';
-      sync();
-    });
-  };
-  video.addEventListener('loadedmetadata', start, { once: true });
-  video.addEventListener('play', sync);
-  video.addEventListener('pause', sync);
-  play.addEventListener('click', () => video.paused ? start() : video.pause());
-  speed.addEventListener('click', () => {
-    video.playbackRate = video.playbackRate === 2 ? 1 : 2;
-    speed.textContent = video.playbackRate === 2 ? '1×' : '2×';
-    speed.setAttribute('aria-label', video.playbackRate === 2 ? 'Play at normal speed' : 'Play at double speed');
-    document.querySelector('.player-controls span').textContent = `V3 · ${video.playbackRate}× speed · muted loop`;
-  });
-  if (video.readyState >= 1) start();
-})();
+ const links=[...document.querySelectorAll('.contents a')];
+ const sections=[...document.querySelectorAll('main>section[id]')];
+ function update(){let current=sections[0];for(const section of sections){if(section.getBoundingClientRect().top<=innerHeight*.3)current=section;}for(const a of links){if(a.hash==='#'+current.id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');}}
+ addEventListener('scroll',update,{passive:true});addEventListener('resize',update);update();
+ const v=document.querySelector('#prototype-video'),play=document.querySelector('#play-toggle'),speed=document.querySelector('#speed-toggle');v.muted=true;v.defaultPlaybackRate=2;v.playbackRate=2;
+ function sync(){play.textContent=v.paused?'Play':'Pause';play.setAttribute('aria-label',v.paused?'Play walkthrough':'Pause walkthrough');}
+ v.addEventListener('play',sync);v.addEventListener('pause',sync);play.onclick=()=>v.paused?v.play().catch(()=>{}):v.pause();
+ speed.onclick=()=>{v.playbackRate=v.playbackRate===2?1:2;speed.textContent=v.playbackRate===2?'1×':'2×';document.querySelector('.player-controls span').textContent=`${v.playbackRate}× · muted loop`;};
+ const stages=[[0,'01 / See','Dashboard → upcoming assignment','See the next assignment, due time, and effort directly beneath each course.'],[8,'02 / Schedule','Calendar → daily agenda','Check class times and locations alongside due dates and start reminders.'],[16,'03 / Start','Lab 6 → Remind me','Open the assignment, review estimated effort, and choose when to begin. The recording also shows the reminder arriving.'],[33.1,'04 / Adjust','Notifications → date changed','In a separate sample scenario, compare the old and new deadline and see the revised reminder.'],[41.1,'05 / Act','Inbox → find the reminder','Use filters, labels, and previews to identify the relevant message.'],[49.1,'05 / Act','Email → return to the assignment','Review the reminder details and use Open assignment to return to the work.']];
+ v.addEventListener('timeupdate',()=>{const st=stages.filter(s=>v.currentTime>=s[0]).pop()||stages[0];document.querySelector('#demo-stage').textContent=st[1];document.querySelector('#demo-title').textContent=st[2];document.querySelector('#demo-description').textContent=st[3];});
 
-(() => {
-  const links = [...document.querySelectorAll('.sidebar .contents a')];
-  const sections = [...document.querySelectorAll('main > section[id]')];
-  let queued = false;
-  function update() {
-    const marker = window.innerHeight * 0.3;
-    let current = sections[0];
-    for (const section of sections) {
-      if (section.getBoundingClientRect().top <= marker) current = section;
-    }
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) current = sections[sections.length - 1];
-    for (const link of links) {
-      if (link.hash === '#' + current.id) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    }
-    queued = false;
-  }
-  window.addEventListener('scroll', () => {
-    if (!queued) { queued = true; requestAnimationFrame(update); }
-  }, { passive: true });
-  window.addEventListener('resize', update);
-  window.addEventListener('load', update);
-  update();
 })();
